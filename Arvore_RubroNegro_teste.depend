@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1712100928 source:c:\users\zenop\onedrive\Área de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Arvore_RB.h"
+
+1712101396 c:\users\zenop\onedrive\Área de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb.h
+	"utils.h"
+
+1711717902 c:\users\zenop\onedrive\Área de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\utils.h
+
