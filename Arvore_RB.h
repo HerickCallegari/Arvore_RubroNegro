@@ -30,6 +30,8 @@ typedef void (*FuncaoImpressao) ( void* );
 
 pNohArvore tio ( pNohArvore raiz );
 
+pNohArvore LeftLeft ( pNohArvore p);
+
 // ############################### implementações ###############################
 
 //------------------------------- Instaciar -------------------------------------------
@@ -62,13 +64,24 @@ pNohArvore insertNohRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp)
     pNohArvore filho;
     if ( fcp ( info, raiz->info ) > 0) {
         filho = insertNohRecursivo(raiz->direita, info, fcp);
+        if(filho->esquerda == raiz)
+        {
+            return filho;
+        }else {
         raiz->direita = filho;
         filho->pai = raiz;
+        }
+
     }
     else {
         filho = insertNohRecursivo(raiz->esquerda, info, fcp);
+        if(filho->direita == raiz)
+        {
+            return filho;
+        }else {
         raiz->esquerda = filho;
         filho->pai = raiz;
+        }
     }
 
 
@@ -84,19 +97,31 @@ pNohArvore insertNohRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp)
 
         //verificar quais condicoes foram violadas
     if ( raiz->cor == 0 && filho->cor == 0) {
-
         if ( tio(raiz) != NULL && tio(raiz)->cor == 0 ) {
             //recolorir o pai, tio e avô
             raiz->cor      = 1;
             tio(raiz)->cor = 1;
             raiz->pai      = 0;
             return raiz;
+        } else {
+            // Existem 4 casos possiveis caso o noh tenha um tio
+            if ( raiz->esquerda->pai == raiz) {
+                printf("\ncaso 1: esquerda do noh e vermelho\n");
+
+                        //para teste
+                    printf("\nraiz: ");
+                    printaInt(raiz->info);
+                    printf("\nraiz->esquerda: ");
+                    printaInt(raiz->esquerda->info);
+                    printf("\nraiz->pai: ");
+                    printaInt(raiz->pai->info);
+
+                    return LeftLeft(raiz);
+            }
+
         }
-
-
     }
 
-    printf("oi");
     return raiz;
 
 }
@@ -128,7 +153,29 @@ pNohArvore tio ( pNohArvore raiz ) {
     return NULL;
 
 }
+//------------------------------- Rotate --------------------------------------------
 
+pNohArvore LeftLeft ( pNohArvore p) {
+    pNohArvore g = p->pai;
+
+        //recolorindo
+    p->cor = 1;
+    g->cor = 0;
+
+        //rotacao
+    if ( p->direita != NULL)
+        g->esquerda = p->direita;
+    else
+        g->esquerda = NULL;
+
+    p->direita = g;
+
+        //trocando pais
+    p->pai = g->pai;
+    g->pai = p;
+
+    return p;
+}
 
 //------------------------------- print ---------------------------------------------
 
