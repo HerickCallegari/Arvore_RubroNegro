@@ -32,6 +32,12 @@ pNohArvore tio ( pNohArvore raiz );
 
 pNohArvore LeftLeft ( pNohArvore p);
 
+pNohArvore LeftRigth(pNohArvore p);
+
+pNohArvore RigthRigth(pNohArvore p);
+
+pNohArvore RigthLeft(pNohArvore p);
+
 // ############################### implementações ###############################
 
 //------------------------------- Instaciar -------------------------------------------
@@ -66,7 +72,7 @@ pNohArvore insertNohRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp)
         filho = insertNohRecursivo(raiz->direita, info, fcp);
         if(filho->esquerda == raiz)
         {
-            return filho;
+            raiz = filho;
         }else {
         raiz->direita = filho;
         filho->pai = raiz;
@@ -77,7 +83,7 @@ pNohArvore insertNohRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp)
         filho = insertNohRecursivo(raiz->esquerda, info, fcp);
         if(filho->direita == raiz)
         {
-            return filho;
+            raiz = filho;
         }else {
         raiz->esquerda = filho;
         filho->pai = raiz;
@@ -105,18 +111,18 @@ pNohArvore insertNohRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp)
             return raiz;
         } else {
             // Existem 4 casos possiveis caso o noh tenha um tio
-            if ( raiz->esquerda->pai == raiz) {
-                printf("\ncaso 1: esquerda do noh e vermelho\n");
-
-                        //para teste
-                    printf("\nraiz: ");
-                    printaInt(raiz->info);
-                    printf("\nraiz->esquerda: ");
-                    printaInt(raiz->esquerda->info);
-                    printf("\nraiz->pai: ");
-                    printaInt(raiz->pai->info);
-
+            if ( raiz->pai->esquerda = raiz) {
+                if (raiz->esquerda->pai == raiz)
                     return LeftLeft(raiz);
+                else if ( raiz->direita->pai == raiz )
+                    return LeftRigth(raiz);
+            }
+
+            if ( raiz->pai->direita = raiz) {
+                if ( raiz->direita->pai == raiz )
+                    return RigthRigth(raiz);
+                else if (raiz->esquerda->pai == raiz)
+                    return RigthLeft(raiz);
             }
 
         }
@@ -163,10 +169,13 @@ pNohArvore LeftLeft ( pNohArvore p) {
     g->cor = 0;
 
         //rotacao
-    if ( p->direita != NULL)
+    if ( p->direita != NULL) {
         g->esquerda = p->direita;
-    else
+        g->esquerda->pai = g;
+    }
+    else {
         g->esquerda = NULL;
+    }
 
     p->direita = g;
 
@@ -177,6 +186,104 @@ pNohArvore LeftLeft ( pNohArvore p) {
     return p;
 }
 
+pNohArvore LeftRigth(pNohArvore p) {
+    pNohArvore x = p->direita;
+    pNohArvore g = p->pai;
+
+        //recolorir
+    g->cor = 0;
+    p->cor = 0;
+    x->cor = 1;
+
+        //rotacao esquerda
+    if ( x->esquerda != NULL) {
+        p->direita = x->esquerda;
+        p->direita->pai = p;
+    }else {
+    p->direita = NULL;
+    }
+    x->esquerda = p;
+    g->esquerda = x;
+
+        //rotacao direita
+    if ( x->direita != NULL) {
+    g->esquerda = x->direita;
+    g->esquerda->pai = g;
+    }else {
+    g->esquerda = NULL;
+    }
+    x->direita = g;
+
+        //troca os pais
+    x->pai = g->pai;
+    p->pai = x;
+    g->pai = x;
+
+
+
+
+    return x;
+}
+
+pNohArvore RigthRigth(pNohArvore p) {
+    pNohArvore g = p->pai;
+
+    //recolorir
+    p->cor = 1;
+    g->cor = 0;
+
+    //rotacionar
+    if (p->esquerda != NULL) {
+        g->direita = p->esquerda;
+        g->direita->pai = g;
+    }else {
+        g->direita = NULL;
+    }
+    p->esquerda = g;
+
+    //trocar pais
+    p->pai = g->pai;
+    g->pai = p;
+
+    return p;
+}
+
+pNohArvore RigthLeft(pNohArvore p) {
+    pNohArvore g = p->pai;
+    pNohArvore x = p->esquerda;
+
+    //recolorir
+    p->cor = 0;
+    x->cor = 1;
+    g->cor = 0;
+
+    //trocar direita
+    if ( x->direita != NULL) {
+        p->esquerda = x->direita;
+        p->esquerda->pai = p;
+    }
+    else {
+        p->esquerda = NULL;
+    }
+    x->direita = p;
+    g->direita = x;
+
+    //trocar esquerda
+    if ( x->esquerda != NULL) {
+        g->direita = x->esquerda;
+        g->direita->pai = g;
+    }else {
+    g->direita = NULL;
+    }
+    x->esquerda = g;
+
+    //troca pai
+    x->pai = g->pai;
+    g->pai = x;
+    p->pai = x;
+
+    return x;
+}
 //------------------------------- print ---------------------------------------------
 
 void imprimeArvoreRecursivo( pNohArvore raiz, FuncaoImpressao fip) {
