@@ -8,5 +8,7 @@ int main()
     insertNoh(desc,alocaInt(4), compInt);
     insertNoh(desc,alocaInt(3), compInt);
 
+    printf("\nRaiz procurada: ");
+    printaInt(FindBy(desc, alocaInt(3), compInt)->info);
     desenhaArvore(desc, printaInt);
 }
