@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1712927638 source:c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\main.c
+1712968852 source:c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Arvore_RB.h"
 
-1712968653 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb.h
+1712969343 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb.h
 	"utils.h"
 
 1711717902 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\utils.h

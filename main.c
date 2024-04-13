@@ -14,6 +14,6 @@ int main()
     insertNoh(desc,alocaInt(16), compInt);
 
 
-    //printf("\nRemocao: %d", Remove(desc, alocaInt(8), compInt));
+    printf("\nRemocao: %d", Remove(desc, alocaInt(100), compInt));
     desenhaArvore(desc, printaInt);
 }

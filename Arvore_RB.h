@@ -32,11 +32,11 @@ pNohArvore Irmao ( pNohArvore raiz );
 
 pNohArvore LeftLeft ( pNohArvore p);
 
-pNohArvore LeftRigth(pNohArvore p);
+pNohArvore LeftRight(pNohArvore p);
 
-pNohArvore RigthRigth(pNohArvore p);
+pNohArvore RightRight(pNohArvore p);
 
-pNohArvore RigthLeft(pNohArvore p);
+pNohArvore RightLeft(pNohArvore p);
 
 int isLeaf(pNohArvore raiz);
 
@@ -195,7 +195,7 @@ pNohArvore LeftLeft ( pNohArvore p) {
     return p;
 }
 
-pNohArvore LeftRigth(pNohArvore p) {
+pNohArvore LeftRight(pNohArvore p) {
     pNohArvore x = p->direita;
     pNohArvore g = p->pai;
 
@@ -234,7 +234,7 @@ pNohArvore LeftRigth(pNohArvore p) {
     return x;
 }
 
-pNohArvore RigthRigth(pNohArvore p) {
+pNohArvore RightRight(pNohArvore p) {
     pNohArvore g = p->pai;
 
     //recolorir
@@ -257,7 +257,7 @@ pNohArvore RigthRigth(pNohArvore p) {
     return p;
 }
 
-pNohArvore RigthLeft(pNohArvore p) {
+pNohArvore RightLeft(pNohArvore p) {
     pNohArvore g = p->pai;
     pNohArvore x = p->esquerda;
 
