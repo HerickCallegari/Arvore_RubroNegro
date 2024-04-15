@@ -44,6 +44,7 @@ void freeNoh(pNohArvore raiz);
 
 pNohArvore PreNoh(pNohArvore raiz);
 
+pNohArvore FindBy(pDescArvore arvore, void* info, FuncaoComparacao fcp);
 // ############################### implementações ###############################
 
 void freeNoh(pNohArvore raiz) {
@@ -69,7 +70,6 @@ pDescArvore criarArvore() {
 //------------------------------- Insert ---------------------------------------------
 
 pNohArvore insertNohRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp) {
-    // Estrutura de inserção
     if (raiz == NULL) {
         pNohArvore noh = malloc(sizeof(NohArvore));
         noh->info = info;
@@ -77,31 +77,20 @@ pNohArvore insertNohRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp)
         noh->direita = NULL;
         noh->esquerda = NULL;
         noh->pai = NULL;
-
         return noh;
     }
 
     pNohArvore filho;
     if (fcp(info, raiz->info) > 0) {
         filho = insertNohRecursivo(raiz->direita, info, fcp);
-        if (filho->pai == NULL) {
-            raiz->direita = filho;
-            filho->pai = raiz;
-        } else {
-            raiz->direita = filho;
-        }
-
+        raiz->direita = filho;
+        filho->pai = raiz;
     } else {
         filho = insertNohRecursivo(raiz->esquerda, info, fcp);
-        if (filho->pai == NULL) {
-            raiz->esquerda = filho;
-            filho->pai = raiz;
-        } else {
-            raiz->esquerda = filho;
-        }
+        raiz->esquerda = filho;
+        filho->pai = raiz;
     }
 
-    //verificar se as condições são válidas
     if (raiz->cor == 1) {
         return raiz;
     }
@@ -111,16 +100,13 @@ pNohArvore insertNohRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp)
         return raiz;
     }
 
-    //verificar quais condições foram violadas
     if (raiz->cor == 0 && filho->cor == 0) {
         if (Irmao(raiz) != NULL && Irmao(raiz)->cor == 0) {
-            //recolorir o pai, Irmao e avô
             raiz->cor = 1;
             Irmao(raiz)->cor = 1;
             raiz->pai->cor = 0;
             return raiz;
         } else {
-            // Existem 4 casos possíveis caso o nó tenha um irmão
             if (raiz->pai->esquerda == raiz) {
                 if (filho == raiz->esquerda)
                     return LeftLeft(raiz->pai);
@@ -140,8 +126,11 @@ pNohArvore insertNohRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp)
     return raiz;
 }
 
-
 void insertNoh ( pDescArvore arvore, void* info, FuncaoComparacao fcp) {
+    if (FindBy(arvore, info, fcp) != NULL) {
+        printf("Valor duplicado. Ignorando insercao.\n");
+        return;
+    }
     arvore->raiz = insertNohRecursivo(arvore->raiz, info, fcp);
     arvore->quantidade++;
 }
@@ -170,25 +159,21 @@ pNohArvore Irmao ( pNohArvore raiz ) {
 }
 //------------------------------- Rotate --------------------------------------------
 
-pNohArvore LeftLeft ( pNohArvore p) {
+pNohArvore LeftLeft(pNohArvore p) {
     pNohArvore g = p->pai;
 
-        //recolorindo
+    // Recolorir
     p->cor = 1;
     g->cor = 0;
 
-        //rotacao
-    if ( p->direita != NULL) {
-        g->esquerda = p->direita;
-        g->esquerda->pai = g;
+    // Rotacionar
+    g->direita = p->esquerda;
+    if (p->esquerda != NULL) {
+        p->esquerda->pai = g;
     }
-    else {
-        g->esquerda = NULL;
-    }
+    p->esquerda = g;
 
-    p->direita = g;
-
-        //trocando pais
+    // Trocar pais
     p->pai = g->pai;
     g->pai = p;
 
@@ -196,61 +181,25 @@ pNohArvore LeftLeft ( pNohArvore p) {
 }
 
 pNohArvore LeftRight(pNohArvore p) {
-    pNohArvore x = p->direita;
-    pNohArvore g = p->pai;
-
-        //recolorir
-    g->cor = 0;
-    p->cor = 0;
-    x->cor = 1;
-
-        //rotacao esquerda
-    if ( x->esquerda != NULL) {
-        p->direita = x->esquerda;
-        p->direita->pai = p;
-    }else {
-    p->direita = NULL;
-    }
-    x->esquerda = p;
-    g->esquerda = x;
-
-        //rotacao direita
-    if ( x->direita != NULL) {
-    g->esquerda = x->direita;
-    g->esquerda->pai = g;
-    }else {
-    g->esquerda = NULL;
-    }
-    x->direita = g;
-
-        //troca os pais
-    x->pai = g->pai;
-    p->pai = x;
-    g->pai = x;
-
-
-
-
-    return x;
+    p->direita = RightRight(p->direita);
+    return LeftLeft(p);
 }
 
 pNohArvore RightRight(pNohArvore p) {
     pNohArvore g = p->pai;
 
-    //recolorir
+    // Recolorir
     p->cor = 1;
     g->cor = 0;
 
-    //rotacionar
-    if (p->esquerda != NULL) {
-        g->direita = p->esquerda;
-        g->direita->pai = g;
-    }else {
-        g->direita = NULL;
+    // Rotacionar
+    g->esquerda = p->direita;
+    if (p->direita != NULL) {
+        p->direita->pai = g;
     }
-    p->esquerda = g;
+    p->direita = g;
 
-    //trocar pais
+    // Trocar pais
     p->pai = g->pai;
     g->pai = p;
 
@@ -258,41 +207,10 @@ pNohArvore RightRight(pNohArvore p) {
 }
 
 pNohArvore RightLeft(pNohArvore p) {
-    pNohArvore g = p->pai;
-    pNohArvore x = p->esquerda;
-
-    //recolorir
-    p->cor = 0;
-    x->cor = 1;
-    g->cor = 0;
-
-    //trocar direita
-    if ( x->direita != NULL) {
-        p->esquerda = x->direita;
-        p->esquerda->pai = p;
-    }
-    else {
-        p->esquerda = NULL;
-    }
-    x->direita = p;
-    g->direita = x;
-
-    //trocar esquerda
-    if ( x->esquerda != NULL) {
-        g->direita = x->esquerda;
-        g->direita->pai = g;
-    }else {
-    g->direita = NULL;
-    }
-    x->esquerda = g;
-
-    //troca pai
-    x->pai = g->pai;
-    g->pai = x;
-    p->pai = x;
-
-    return x;
+    p->esquerda = LeftLeft(p->esquerda);
+    return RightRight(p);
 }
+
 //------------------------------- print ---------------------------------------------
 
 void imprimeArvoreRecursivo( pNohArvore raiz, FuncaoImpressao fip) {
@@ -487,10 +405,10 @@ pNohArvore RemoveRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp) {
                     freeNoh(raiz);
                     return b;
                 } else {
-                    //irmao tem 1 filho
-                    //if ( b->direita != NULL)
-
-                    //else
+                        //irmao tem 1 filho
+                   // if ( b->direita != NULL)
+                        // o filho esta na direita
+                   // else
                 }
 
             }
@@ -499,16 +417,21 @@ pNohArvore RemoveRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp) {
             pNohArvore preNoh = PreNoh(raiz->esquerda);
             pNohArvore p = preNoh->pai;
 
-            if ( preNoh->esquerda != NULL ) {
+            // Operacao para trocar a informação do nó que esta sendo removido pela sua mais proxima. depois excluir a mais proxima
+            if (preNoh->pai == raiz) {
+                    //caso o noh mais proximo seja logo à esquerda da raiz
+                raiz->esquerda = preNoh->esquerda;
+
+            }else {
+                p->direita = NULL;
                 p->direita = preNoh->esquerda;
+            }
+            if ( preNoh->esquerda != NULL  ) {
                 preNoh->esquerda->pai = p;
             }
-
-            // Operacao para trocar a informação do nó que esta sendo removido pela sua mais proxima. depois excluir a mais proxima
             free(raiz->info);
             raiz->info = preNoh->info;
 
-            p->direita = NULL;
 
             preNoh->info = NULL;
             freeNoh(preNoh);
@@ -518,16 +441,14 @@ pNohArvore RemoveRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp) {
                 //caso tenha 1 filho
             pNohArvore filho;
 
-            if ( raiz->direita != NULL ) {
-                filho = raiz->direita;
-            }
-            else {
-                filho = raiz->esquerda;
-            }
+            filho = raiz->direita != NULL ? raiz->direita : raiz->esquerda;
+
+            raiz->info = filho->info;
 
             filho->pai = raiz->pai;
             filho->cor = 1;
 
+            raiz->info = NULL;
             freeNoh(raiz);
 
             return filho;
