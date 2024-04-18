@@ -1,11 +1,37 @@
 # depslib dependency file v1.0
-1713185664 source:c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\main.c
+1713446138 source:c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\main.c
 	<stdio.h>
 	<stdlib.h>
-	"Arvore_RB.h"
+	"Arvore_RB/Arvore_RB.h"
 
-1713185567 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb.h
+1713296402 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb.h
 	"utils.h"
 
 1711717902 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\utils.h
+
+1713298803 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\arvore_rb.h
+	"utils.h"
+	"Operacoes/StructArvore.h"
+	"Operacoes/CriarDescritor.h"
+	"Operacoes/ProcuraNoh.h"
+	"Operacoes/Rotacoes.h"
+	"Operacoes/ImprimeArvore.h"
+	"Operacoes/Insert.h"
+
+1713297546 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\utils.h
+	"Operacoes/StructArvore.h"
+
+1713299032 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\structarvore.h
+
+1713297752 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\criardescritor.h
+	"StructArvore.h"
+
+1713298689 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\procuranoh.h
+
+1713446377 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\rotacoes.h
+
+1713298380 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\imprimearvore.h
+
+1713445923 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\insert.h
+	"StructArvore.h"
 

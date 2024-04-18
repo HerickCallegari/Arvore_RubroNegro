@@ -31,11 +31,17 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Arvore_RB.h" />
+		<Unit filename="Arvore_RB/Arvore_RB.h" />
+		<Unit filename="Arvore_RB/Operacoes/CriarDescritor.h" />
+		<Unit filename="Arvore_RB/Operacoes/ImprimeArvore.h" />
+		<Unit filename="Arvore_RB/Operacoes/Insert.h" />
+		<Unit filename="Arvore_RB/Operacoes/ProcuraNoh.h" />
+		<Unit filename="Arvore_RB/Operacoes/Rotacoes.h" />
+		<Unit filename="Arvore_RB/Operacoes/StructArvore.h" />
+		<Unit filename="Arvore_RB/utils.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="utils.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
