@@ -1,0 +1,4 @@
+#ifndef REMOVE_INFO_RUBRO_NEGRA_H
+#define REMOVE_INFO_RUBRO_NEGRA_H
+
+#endif

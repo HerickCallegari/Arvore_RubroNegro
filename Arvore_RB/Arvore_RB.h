@@ -10,11 +10,11 @@
 
 #include "Operacoes/ProcuraNoh.h"
 
-#include "Operacoes/Rotacoes.h"
-
 #include "Operacoes/ImprimeArvore.h"
 
 #include "Operacoes/Insert.h"
+
+#include "Operacoes/Remove.h"
 
 // ############################### Cabeçalhos ###############################
 
@@ -22,13 +22,13 @@ typedef int (*FuncaoComparacao) ( void*, void*);
 
 typedef void (*FuncaoImpressao) ( void* );
 
-pNohArvore LeftLeft ( pNohArvore p);
+pNohArvore Right ( pNohArvore raiz);
 
-pNohArvore LeftRight(pNohArvore p);
+pNohArvore RightLeft(pNohArvore raiz);
 
-pNohArvore RightRight(pNohArvore p);
+pNohArvore Left(pNohArvore raiz);
 
-pNohArvore RightLeft(pNohArvore p);
+pNohArvore LeftRight(pNohArvore raiz);
 
 int isLeaf(pNohArvore raiz);
 

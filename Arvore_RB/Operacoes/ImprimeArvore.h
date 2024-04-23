@@ -75,7 +75,7 @@ void desenhaArvoreRecursivo(pNohArvore raiz, int depth, char *path, int right, F
     desenhaArvoreRecursivo(raiz->esquerda, depth, path, 0, fi);
 }
 
-void desenhaArvore(pDescArvore arvore, FuncaoImpressao fi) {
+void DesenhaArvore(pDescArvore arvore, FuncaoImpressao fi) {
     char path[255] = {};
 
     desenhaArvoreRecursivo(arvore->raiz, 0, path, 0, fi);

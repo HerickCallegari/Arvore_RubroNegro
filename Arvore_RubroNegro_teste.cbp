@@ -36,7 +36,6 @@
 		<Unit filename="Arvore_RB/Operacoes/ImprimeArvore.h" />
 		<Unit filename="Arvore_RB/Operacoes/Insert.h" />
 		<Unit filename="Arvore_RB/Operacoes/ProcuraNoh.h" />
-		<Unit filename="Arvore_RB/Operacoes/Rotacoes.h" />
 		<Unit filename="Arvore_RB/Operacoes/StructArvore.h" />
 		<Unit filename="Arvore_RB/utils.h" />
 		<Unit filename="main.c">
