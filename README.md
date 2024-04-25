@@ -31,12 +31,56 @@ struct NohArvoreRB{
 * Onde "direita" e "esquerda" são nohs que aponta para outros nohs, que segue a mesma estrutura, o noh "pai" aponta para o noh que antecede o noh em questão e "cor" é um numero inteiro que tem respresentação boelana, onde 0 representa "Vermelho" e 1 representa "Preto"
 
 
-### Funções da Biblioteca
-* função de insert:
+## Funções da Biblioteca
+* Função para instanciar o descritor:
 
-```
-pDescArvore Descritor;
+  Cabeçalho:
+  ```
+  pDescArvore criarArvore();
+  ```
+  Exemplo:
+  ```
+  pDescArvore Descritor;
 
-  //insert
-insertNoh(Descritor, alocaInt(5), compInt);
-```
+  Descritor = criarArvore();
+  ```
+* Função de insert:
+
+  Cabeçalho:
+  ```
+  void insertNoh(pDescArvore arvore, void *info, FuncaoComparacao pfc);
+  ```
+  Exemplo:
+  ```
+  insertNoh(Descritor, alocaInt(5), compInt);
+  ```
+* Função de FindBy:
+
+  Cabeçalho:
+  ```
+  pNohArvore FindBy(pDescArvore arvore, void* info, FuncaoComparacao fcp);
+  ```
+  Exemplo:
+  ```
+  pNohArvore FindBy(Descritor, alocaInt(5), compInt);
+  ```
+* Função de Print:
+
+  Cabeçalho:
+  ```
+  void DesenhaArvore(pDescArvore arvore, FuncaoImpressao fi)
+  ```
+  Exemplo:
+  ```
+  DesenhaArvore(desc, printaInt);
+  ```
+  Resultado:
+  
+* Função de remove:
+
+  Cabeçalho:
+  ```
+  int Remove(pDescArvore arvore, void* info, FuncaoComparacao fcp)
+  ```
+  
+
