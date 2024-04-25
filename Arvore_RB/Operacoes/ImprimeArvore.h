@@ -1,5 +1,7 @@
+#ifndef IMPRIME_ARVORERUBRO_NEGRA_H
+#define IMPRIME_ARVORE_RUBRO_NEGRA_H
 
-typedef void (*FuncaoImpressao) ( void* );
+#include "../Arvore_RB.h"
 
 void imprimeArvoreRecursivo( pNohArvore raiz, FuncaoImpressao fip) {
     if ( raiz != NULL)
@@ -81,3 +83,5 @@ void DesenhaArvore(pDescArvore arvore, FuncaoImpressao fi) {
     desenhaArvoreRecursivo(arvore->raiz, 0, path, 0, fi);
     printf("\n");
 }
+
+#endif

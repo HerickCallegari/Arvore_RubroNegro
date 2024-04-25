@@ -1,20 +1,8 @@
+#ifndef BIBLIOTECA_ARVORE_RUBRO_NEGRA_H
+#define BIBLIOTECA_ARVORE_RUBRO_NEGRA_H
 #include "utils.h"
 
 #define ESPACO 5
-
-// ############################### Conexoes ###############################
-
-#include "Operacoes/StructArvore.h"
-
-#include "Operacoes/CriarDescritor.h"
-
-#include "Operacoes/ProcuraNoh.h"
-
-#include "Operacoes/ImprimeArvore.h"
-
-#include "Operacoes/Insert.h"
-
-#include "Operacoes/Remove.h"
 
 // ############################### Cabeçalhos ###############################
 
@@ -34,6 +22,27 @@ int isLeaf(pNohArvore raiz);
 
 pNohArvore PreNoh(pNohArvore raiz);
 
+pNohArvore avo(pNohArvore raiz);
 
-// ############################### implementações ###############################
+pNohArvore tio(pNohArvore raiz);
+// ############################### Conexoes ###############################
 
+#include "Operacoes/StructArvore.h"
+
+#include "Operacoes/CriarDescritor.h"
+
+#include "Operacoes/ProcuraNoh.h"
+
+#include "Operacoes/ImprimeArvore.h"
+
+#include "Operacoes/Insert.h"
+
+#include "Operacoes/Remove.h"
+
+#include "Operacoes/Rotacoes.h"
+
+#include "Operacoes/Remove.h"
+
+
+
+#endif

@@ -1,6 +1,5 @@
-
-typedef int (*FuncaoComparacao) ( void*, void*);
-
+#ifndef FINDBY_RUBRO_NEGRA_H
+#define FINDBY_RUBRO_NEGRA_H
 pNohArvore proxLeaf(pNohArvore raiz, void* info, FuncaoComparacao fcp) {
     if (raiz == NULL) {
             printf("raiz é nula");
@@ -41,3 +40,5 @@ pNohArvore FindByRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp) {
 pNohArvore FindBy(pDescArvore arvore, void* info, FuncaoComparacao fcp) {
     return FindByRecursivo(arvore->raiz, info, fcp);;
 }
+
+#endif

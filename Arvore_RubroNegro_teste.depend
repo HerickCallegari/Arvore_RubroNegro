@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1713487128 source:c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\main.c
+1713901786 source:c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -10,27 +10,35 @@
 
 1711717902 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\utils.h
 
-1713485231 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\arvore_rb.h
+1713901961 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\arvore_rb.h
 	"utils.h"
 	"Operacoes/StructArvore.h"
 	"Operacoes/CriarDescritor.h"
 	"Operacoes/ProcuraNoh.h"
 	"Operacoes/ImprimeArvore.h"
 	"Operacoes/Insert.h"
+	"Operacoes/Remove.h"
+	"Operacoes/Rotacoes.h"
+	"Operacoes/Remove.h"
 
 1713485314 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\utils.h
 	"Operacoes/StructArvore.h"
 
 1713485314 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\structarvore.h
 
-1713297752 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\criardescritor.h
-	"StructArvore.h"
+1713902202 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\criardescritor.h
+	"../Arvore_RB.h"
 
-1713298689 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\procuranoh.h
+1713902370 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\procuranoh.h
 
-1713484333 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\rotacoes.h
+1713900604 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\rotacoes.h
 
-1713298380 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\imprimearvore.h
+1713902265 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\imprimearvore.h
+	"../Arvore_RB.h"
 
-1713485314 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\insert.h
+1713902693 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\insert.h
+	"../Arvore_RB.h"
+
+1713902693 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvore_rb\arvore_rubronegro_teste\arvore_rb\operacoes\remove.h
+	"../Arvore_RB.h"
 
